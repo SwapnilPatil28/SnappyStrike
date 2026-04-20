@@ -76,27 +76,28 @@ export default function DigitalStorefront() {
 
   return (
     <div className="min-h-screen bg-muted/20 pb-20">
+      {/* Dynamic Promo Banner */}
+      {store.activeOffers && (
+         <div className="w-full bg-destructive text-destructive-foreground py-2 px-4 shadow-sm text-center text-sm font-black tracking-widest uppercase z-10 animate-in slide-in-from-top flex items-center justify-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span> {store.activeOffers}
+         </div>
+      )}
+
       {/* Store Header Banner */}
       <div className="bg-primary text-primary-foreground py-12 px-6 shadow-2xl relative overflow-hidden">
-        {/* Dynamic Promo Banner */}
-        {store.activeOffers && (
-           <div className="absolute top-0 left-0 w-full bg-destructive text-destructive-foreground py-2 px-4 shadow-sm text-center text-sm font-black tracking-widest uppercase z-10 animate-in slide-in-from-top flex items-center justify-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span> {store.activeOffers}
-           </div>
-        )}
 
         {/* Global Hub Back Link & Wishlist */}
-        <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20 flex items-center gap-4">
-           <Link to="/" className="text-primary-foreground/80 hover:text-white text-sm font-medium transition-colors">
-              ← SnappyStrike Hub
+        <div className="absolute top-3 right-3 md:top-6 md:right-6 z-20 flex items-center gap-2 md:gap-4">
+           <Link to="/" className="text-primary-foreground/80 hover:text-white text-xs md:text-sm font-medium transition-colors">
+              ← Hub
            </Link>
-           <Link to="/wishlist" className="flex items-center gap-2 bg-background border px-4 py-2 rounded-full font-bold shadow-sm hover:translate-y-[-2px] transition-transform text-foreground">
+           <Link to="/wishlist" className="flex items-center gap-1 md:gap-2 bg-background border px-3 py-1.5 md:px-4 md:py-2 rounded-full font-bold shadow-sm hover:translate-y-[-2px] transition-transform text-foreground text-xs md:text-sm">
              <Heart size={16} className="text-destructive" fill="currentColor" /> Wishlist
            </Link>
         </div>
         
-        <div className={`max-w-7xl mx-auto relative z-10 ${store.activeOffers ? 'mt-6' : ''}`}>
-          <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight drop-shadow-md">
+        <div className={`max-w-7xl mx-auto relative z-10`}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight drop-shadow-md">
             {store.name || "Local Commerce Shop"}
           </h1>
           <div className="flex flex-wrap gap-4 text-primary-foreground/80 font-medium">
@@ -123,7 +124,7 @@ export default function DigitalStorefront() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredProducts.length === 0 ? (
             <div className="col-span-full py-12 text-center text-muted-foreground bg-card border rounded-xl">
               No products available or matching search.

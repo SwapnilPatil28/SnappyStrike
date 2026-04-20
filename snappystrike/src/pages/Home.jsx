@@ -15,11 +15,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20">
-      <header className="border-b p-4 flex justify-between items-center bg-card sticky top-0 z-50 shadow-sm">
+      <header className="border-b p-3 md:p-4 flex justify-between items-center bg-card sticky top-0 z-50 shadow-sm gap-2">
         <h1 className="text-2xl font-black text-primary tracking-tighter">SnappyStrike</h1>
         <div>
           {user ? (
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-2 md:gap-4 items-center flex-wrap justify-end">
               <span className="text-sm font-medium hidden md:block">Hello, {user.email}</span>
               {role === "buyer" && (
                 <Link to="/wishlist" className="bg-background border border-border text-foreground px-4 py-2 rounded-md font-medium text-sm flex items-center gap-2 hover:bg-muted">
@@ -59,10 +59,10 @@ export default function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
           
           <div className="max-w-4xl mx-auto space-y-6 z-10 relative">
-            <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
               The <span className="text-primary">Hyperlocal</span> Advantage
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto">
               Find exact products nearby. Or run your supermarket with advanced camera scanning POS.
             </p>
             

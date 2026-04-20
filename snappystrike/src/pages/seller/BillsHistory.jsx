@@ -194,7 +194,7 @@ export default function BillsHistory() {
               </div>
 
               <div className="p-6 overflow-y-auto flex-1 space-y-6 bg-muted/10">
-                 <div className="grid grid-cols-3 gap-4">
+                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
                       <label className="text-xs font-bold uppercase mb-1 block">Entity Name</label>
                       <input type="text" value={editBill.entityName} onChange={e => handleEditChange('entityName', e.target.value)} className="w-full p-2 border bg-background rounded focus:ring-1 outline-none"/>
@@ -209,8 +209,8 @@ export default function BillsHistory() {
                     </div>
                  </div>
 
-                 <div className="border rounded-xl bg-background overflow-hidden">
-                    <table className="w-full text-sm">
+                 <div className="border rounded-xl bg-background overflow-hidden overflow-x-auto">
+                    <table className="w-full min-w-[500px] text-sm">
                        <thead className="bg-muted text-muted-foreground uppercase text-[10px] font-black">
                          <tr><th className="p-3 text-left">Item</th><th className="p-3 w-20 text-center">Unit Px(₹)</th><th className="p-3 w-20 text-center">Qty</th><th className="p-3 w-16 text-center">Disc%</th><th className="p-3 w-12 text-center">X</th></tr>
                        </thead>
@@ -229,13 +229,13 @@ export default function BillsHistory() {
                  </div>
               </div>
 
-              <div className="p-5 border-t shrink-0 flex justify-between items-center bg-card">
+              <div className="p-5 border-t shrink-0 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 bg-card">
                  <div className="flex items-center gap-2 text-destructive font-bold text-sm bg-destructive/10 px-4 py-2 rounded-lg">
                     <AlertTriangle size={16}/> Overwriting Historical Ledger
                  </div>
                  <div className="flex gap-3">
-                    <button onClick={() => setEditBill(null)} className="px-5 py-2 rounded-lg border font-bold hover:bg-muted">Cancel</button>
-                    <button onClick={saveEdit} className="px-5 py-2 rounded-lg font-bold bg-primary text-primary-foreground hover:opacity-90 flex items-center gap-2"><Save size={18}/> Deploy Math Changes</button>
+                    <button onClick={() => setEditBill(null)} className="flex-1 sm:flex-none px-5 py-2 rounded-lg border font-bold hover:bg-muted">Cancel</button>
+                    <button onClick={saveEdit} className="flex-1 sm:flex-none px-5 py-2 rounded-lg font-bold bg-primary text-primary-foreground hover:opacity-90 flex items-center justify-center gap-2"><Save size={18}/> Deploy Math Changes</button>
                  </div>
               </div>
            </div>
@@ -320,20 +320,20 @@ export default function BillsHistory() {
               {/* Expanded Details */}
               {expandedId === inv.id && (
                 <div className="p-6 border-t bg-muted/10 animate-in slide-in-from-top-2">
-                  <div className="flex gap-2 justify-end mb-4">
-                     <button onClick={() => startEdit(inv)} className="flex items-center gap-2 bg-background border px-4 py-2 rounded-lg text-sm font-bold hover:text-primary transition-colors hover:border-primary/50"><Edit size={16}/> Alter Record</button>
-                     <button onClick={() => setPrintBill(inv)} className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold shadow-sm hover:opacity-90"><Printer size={16}/> Extract PDF Receipt</button>
+                  <div className="flex flex-col sm:flex-row gap-2 justify-end mb-4">
+                     <button onClick={() => startEdit(inv)} className="flex items-center justify-center gap-2 bg-background border px-4 py-2 rounded-lg text-sm font-bold hover:text-primary transition-colors hover:border-primary/50"><Edit size={16}/> Alter Record</button>
+                     <button onClick={() => setPrintBill(inv)} className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold shadow-sm hover:opacity-90"><Printer size={16}/> Extract PDF Receipt</button>
                   </div>
                   
-                  <div className="space-y-2 mb-6">
-                    <div className="flex justify-between text-xs font-black tracking-widest border-b border-border/50 pb-3 text-muted-foreground uppercase">
+                  <div className="space-y-2 mb-6 overflow-x-auto">
+                    <div className="flex justify-between text-xs font-black tracking-widest border-b border-border/50 pb-3 text-muted-foreground uppercase min-w-[400px]">
                       <span className="w-1/2">Line Item</span>
                       <span className="w-1/6 text-center">Qty / Base</span>
                       <span className="w-1/6 text-center">Disc</span>
                       <span className="w-1/6 text-right">Net</span>
                     </div>
                     {inv.items.map((item, idx) => (
-                      <div key={idx} className="flex justify-between text-sm py-3 border-b border-border/30 last:border-0 items-center">
+                      <div key={idx} className="flex justify-between text-sm py-3 border-b border-border/30 last:border-0 items-center min-w-[400px]">
                         <span className="font-bold truncate pr-2 w-1/2">{item.name} <span className="text-[10px] text-muted-foreground ml-2 font-mono bg-background px-1 rounded border">{item.barcode}</span></span>
                         <span className="w-1/6 text-center font-medium bg-background border px-2 py-1 rounded">{item.qty} &times; ₹{item.price}</span>
                         <span className="w-1/6 text-center text-destructive font-bold">{item.discount > 0 ? `${item.discount}%` : '-'}</span>

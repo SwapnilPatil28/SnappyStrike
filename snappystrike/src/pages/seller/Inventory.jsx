@@ -91,7 +91,7 @@ export default function Inventory() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center bg-card p-4 rounded-xl border border-border shadow-sm">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center bg-card p-4 rounded-xl border border-border shadow-sm gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Inventory Management</h1>
           <p className="text-sm text-muted-foreground">Manage your products and stock. Barcodes are compulsory.</p>
@@ -161,8 +161,8 @@ export default function Inventory() {
         </div>
       )}
 
-      <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
-        <table className="w-full text-sm text-left">
+      <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden overflow-x-auto w-full">
+        <table className="w-full min-w-[600px] text-sm text-left">
           <thead className="bg-muted text-muted-foreground uppercase text-xs">
             <tr>
               <th className="px-6 py-3 font-medium">Barcode</th>

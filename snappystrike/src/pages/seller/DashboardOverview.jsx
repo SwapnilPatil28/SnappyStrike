@@ -91,9 +91,9 @@ export default function DashboardOverview() {
   return (
     <div className="space-y-6">
       
-      <div className="flex justify-between items-center bg-card p-6 rounded-2xl border border-border shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)]">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center bg-card p-4 md:p-6 rounded-2xl border border-border shadow-[0_4px_30px_-5px_rgba(0,0,0,0.05)] gap-2">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight">Performance Analytics</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">Performance Analytics</h1>
           <p className="text-muted-foreground mt-1">Real-time metrics mapping your business trajectory.</p>
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function DashboardOverview() {
                <div className="p-2 bg-green-500/20 rounded-lg"><TrendingUp size={20}/></div>
                <h3 className="font-bold text-sm uppercase tracking-widest">Total Revenue</h3>
             </div>
-            <div className="text-3xl font-black flex items-center tracking-tight"><IndianRupee size={24} className="mr-1 opacity-50"/>{metrics.totalRevenue.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-black flex items-center tracking-tight break-all"><IndianRupee size={20} className="mr-1 opacity-50 shrink-0"/>{metrics.totalRevenue.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</div>
             <p className="text-xs text-muted-foreground mt-2 font-medium tracking-wide">Across {metrics.salesCount} Sales Transactions</p>
          </div>
 
@@ -118,7 +118,7 @@ export default function DashboardOverview() {
                <div className="p-2 bg-orange-500/20 rounded-lg"><TrendingDown size={20}/></div>
                <h3 className="font-bold text-sm uppercase tracking-widest">Purchase Spend</h3>
             </div>
-            <div className="text-3xl font-black flex items-center tracking-tight"><IndianRupee size={24} className="mr-1 opacity-50"/>{metrics.totalPurchases.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-black flex items-center tracking-tight break-all"><IndianRupee size={20} className="mr-1 opacity-50 shrink-0"/>{metrics.totalPurchases.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</div>
             <p className="text-xs text-muted-foreground mt-2 font-medium tracking-wide">Across {metrics.purchaseCount} Wholsesale Bills</p>
          </div>
 
@@ -128,7 +128,7 @@ export default function DashboardOverview() {
                <div className="p-2 bg-blue-500/20 rounded-lg"><Layers size={20}/></div>
                <h3 className="font-bold text-sm uppercase tracking-widest">Asset Valuation</h3>
             </div>
-            <div className="text-3xl font-black flex items-center tracking-tight"><IndianRupee size={24} className="mr-1 opacity-50"/>{metrics.inventoryValuation.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-black flex items-center tracking-tight break-all"><IndianRupee size={20} className="mr-1 opacity-50 shrink-0"/>{metrics.inventoryValuation.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</div>
             <p className="text-xs text-muted-foreground mt-2 font-medium tracking-wide">Total Market Value of Live Stock</p>
          </div>
 
@@ -158,7 +158,7 @@ export default function DashboardOverview() {
                   <div className="p-12 text-center text-muted-foreground font-medium">All stock levels are optimal!</div>
                ) : (
                   lowStockItems.map(item => (
-                     <div key={item.id} className="p-4 px-6 flex justify-between items-center hover:bg-muted/30 transition-colors">
+                     <div key={item.id} className="p-4 px-4 md:px-6 flex flex-col sm:flex-row justify-between sm:items-center gap-2 hover:bg-muted/30 transition-colors">
                         <div>
                            <div className="font-bold flex items-center gap-2">{item.name}</div>
                            <div className="text-xs text-muted-foreground font-mono mt-1">{item.barcode}</div>
