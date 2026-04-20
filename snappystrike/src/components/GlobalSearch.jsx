@@ -79,17 +79,17 @@ export default function GlobalSearch() {
         </div>
         <input 
           type="text"
-          className="w-full p-4 pl-14 pr-32 text-lg border-2 border-border rounded-full bg-background/50 backdrop-blur-sm focus:bg-background focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm"
-          placeholder="Search for any product across all stores..."
+          className="w-full p-4 pl-12 md:pl-14 pr-24 md:pr-32 text-base md:text-lg border-2 border-border rounded-full bg-background/50 backdrop-blur-sm focus:bg-background focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm"
+          placeholder="Search products nearby..."
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
         <button 
           type="submit" 
           disabled={loading}
-          className="absolute right-2 top-2 bottom-2 bg-primary text-primary-foreground px-6 rounded-full font-bold shadow-md hover:shadow-lg hover:-translate-y-px transition-all disabled:opacity-50"
+          className="absolute right-2 top-2 bottom-2 bg-primary text-primary-foreground px-4 md:px-6 rounded-full font-bold shadow-md hover:shadow-lg hover:-translate-y-px transition-all disabled:opacity-50 text-sm md:text-base"
         >
-          {loading ? "Searching..." : "Search"}
+          {loading ? "..." : "Search"}
         </button>
       </form>
 

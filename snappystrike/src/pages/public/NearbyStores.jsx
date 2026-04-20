@@ -66,15 +66,15 @@ export default function NearbyStores() {
         <h2 className="text-3xl font-bold mb-6">Find Supermarkets Near You</h2>
         
         <div className="bg-card border border-border p-6 rounded-2xl shadow-sm inline-block w-full max-w-xl text-left">
-          <form onSubmit={fetchStoresByPincode} className="flex gap-2">
+          <form onSubmit={fetchStoresByPincode} className="flex flex-col sm:flex-row gap-2">
             <input 
               type="text"
-              placeholder="Enter Pincode (e.g. 110001)"
+              placeholder="Enter Pincode"
               className="flex-1 p-3 border border-input rounded-xl bg-background focus:ring-2 focus:ring-primary outline-none"
               value={pincode}
               onChange={e => setPincode(e.target.value)}
             />
-            <button type="submit" className="bg-primary text-primary-foreground px-6 font-bold rounded-xl hover:opacity-90 transition-opacity">
+            <button type="submit" className="bg-primary text-primary-foreground px-6 py-3 sm:py-0 font-bold rounded-xl hover:opacity-90 transition-opacity">
               Search
             </button>
           </form>
