@@ -98,14 +98,7 @@ VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
 # 4. Launch the Local Dev Server
 npm run dev
 ```
-
-### Deploying to Vercel
-1. Import the repository into your Vercel Dashboard.
-2. Under "Root Directory", ensure you select the React folder if nested.
-3. Paste all 7 variables from your `.env.local` directly into the Vercel **Environment Variables** portal.
-4. Click **Deploy**. Vercel will natively respect the `vercel.json` SPA redirection protocols attached in this repository.
-
-<br />
+<br>
 
 ---
 
