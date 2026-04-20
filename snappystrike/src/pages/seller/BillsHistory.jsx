@@ -243,7 +243,7 @@ export default function BillsHistory() {
       )}
 
 
-      <div className="flex flex-col md:flex-row justify-between items-center bg-card p-6 rounded-2xl border border-border shadow-sm gap-4 print:hidden">
+      <div className="flex flex-col md:flex-row justify-between items-center bg-card p-4 md:p-6 rounded-2xl border border-border shadow-sm gap-4 print:hidden">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight flex items-center gap-3">
             <FileText className="text-primary" size={32} /> Invoice Ledger
@@ -284,32 +284,32 @@ export default function BillsHistory() {
               )}
 
               <div 
-                className="p-5 flex flex-col sm:flex-row justify-between sm:items-center gap-4 cursor-pointer hover:bg-muted/30"
+                className="p-3 md:p-5 flex flex-col sm:flex-row justify-between sm:items-center gap-4 cursor-pointer hover:bg-muted/30"
                 onClick={() => toggleExpand(inv.id)}
               >
-                <div className="flex gap-4 items-center">
-                   <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${inv.type === 'sale' ? 'bg-primary/10 text-primary' : 'bg-secondary/20 text-secondary-foreground'}`}>
+                <div className="flex gap-3 md:gap-4 items-center">
+                   <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-base md:text-lg shrink-0 ${inv.type === 'sale' ? 'bg-primary/10 text-primary' : 'bg-secondary/20 text-secondary-foreground'}`}>
                       {inv.type === 'sale' ? 'S' : 'P'}
                    </div>
-                   <div>
-                     <h3 className="font-extrabold text-lg flex items-center gap-2 mt-2">
+                   <div className="min-w-0">
+                     <h3 className="font-extrabold text-base md:text-lg flex items-center gap-2 mt-1 truncate">
                        {inv.billNumber || `#${inv.id.slice(-6).toUpperCase()}`}
                      </h3>
-                     <div className="text-sm text-muted-foreground font-medium">
+                     <div className="text-[10px] md:text-sm text-muted-foreground font-medium truncate">
                        {new Date(inv.date).toLocaleString()}
                      </div>
                      {inv.entityName && (
-                       <div className="text-xs uppercase font-bold tracking-wider mt-1 text-primary/80">
+                       <div className="text-[9px] md:text-xs uppercase font-bold tracking-wider mt-0.5 text-primary/80 truncate">
                          {inv.type === 'purchase' ? 'Supplier: ' : 'Client: '} {inv.entityName}
                        </div>
                      )}
                    </div>
                 </div>
                 
-                <div className="flex items-center gap-6">
-                  <div className="text-right">
-                    <p className="text-sm text-muted-foreground font-semibold px-3 py-1 bg-muted rounded-full inline-block mb-1">{inv.items.length} lines</p>
-                    <p className="font-black text-xl text-foreground">₹{(inv.totalAmount || 0).toFixed(2)}</p>
+                <div className="flex items-center justify-between sm:justify-end gap-4 md:gap-6 w-full sm:w-auto mt-2 sm:mt-0 pt-3 sm:pt-0 border-t sm:border-0 border-border/30">
+                  <div className="text-left sm:text-right">
+                    <p className="text-[10px] md:text-sm text-muted-foreground font-semibold px-2 md:px-3 py-0.5 md:py-1 bg-muted rounded-full inline-block mb-1">{inv.items.length} lines</p>
+                    <p className="font-black text-lg md:text-xl text-foreground">₹{(inv.totalAmount || 0).toFixed(2)}</p>
                   </div>
                   <button className="p-2 hover:bg-muted rounded-full">
                     {expandedId === inv.id ? <ChevronUp size={20}/> : <ChevronDown size={20}/>}
@@ -319,10 +319,10 @@ export default function BillsHistory() {
 
               {/* Expanded Details */}
               {expandedId === inv.id && (
-                <div className="p-6 border-t bg-muted/10 animate-in slide-in-from-top-2">
+                <div className="p-4 md:p-6 border-t bg-muted/10 animate-in slide-in-from-top-2">
                   <div className="flex flex-col sm:flex-row gap-2 justify-end mb-4">
-                     <button onClick={() => startEdit(inv)} className="flex items-center justify-center gap-2 bg-background border px-4 py-2 rounded-lg text-sm font-bold hover:text-primary transition-colors hover:border-primary/50"><Edit size={16}/> Alter Record</button>
-                     <button onClick={() => setPrintBill(inv)} className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold shadow-sm hover:opacity-90"><Printer size={16}/> Extract PDF Receipt</button>
+                     <button onClick={() => startEdit(inv)} className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-background border px-4 py-2 rounded-lg text-sm font-bold hover:text-primary transition-colors hover:border-primary/50"><Edit size={16}/> Alter Record</button>
+                     <button onClick={() => setPrintBill(inv)} className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold shadow-sm hover:opacity-90"><Printer size={16}/> PDF Receipt</button>
                   </div>
                   
                   <div className="space-y-2 mb-6 overflow-x-auto">
@@ -345,7 +345,7 @@ export default function BillsHistory() {
                   </div>
 
                   <div className="flex justify-end pt-4 border-t text-sm">
-                    <div className="w-72 space-y-2 font-medium">
+                    <div className="w-full sm:w-72 space-y-2 font-medium">
                       <div className="flex justify-between text-muted-foreground">
                         <span>Gross Evaluation</span>
                         <span>₹{(inv.subTotal || 0).toFixed(2)}</span>
@@ -362,7 +362,7 @@ export default function BillsHistory() {
                           <span>+ ₹{(inv.tax || 0).toFixed(2)}</span>
                         </div>
                       )}
-                      <div className="flex justify-between font-black text-xl pt-3 border-t mt-3">
+                      <div className="flex justify-between font-black text-lg md:text-xl pt-3 border-t mt-3">
                         <span>Final Settlement</span>
                         <span className="text-primary">₹{(inv.totalAmount || 0).toFixed(2)}</span>
                       </div>

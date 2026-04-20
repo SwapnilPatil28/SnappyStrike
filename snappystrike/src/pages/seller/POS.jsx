@@ -295,7 +295,7 @@ export default function POS() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-6rem)] print:block print:h-auto print:bg-white print:m-0 print:p-0">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[calc(100vh-6rem)] h-auto print:block print:h-auto print:bg-white print:m-0 print:p-0 pb-24 lg:pb-0">
 
       {/* Print-only global style override */}
       <style>{`@media print { body * { visibility: hidden; } .print-receipt, .print-receipt * { visibility: visible !important; } .print-receipt { position: fixed; left: 0; top: 0; width: 100%; padding: 12mm 15mm !important; } }`}</style>
@@ -429,7 +429,7 @@ export default function POS() {
         MAIN TERMINAL CONTROLS
         ======================================================== 
       */}
-      <div className="lg:col-span-7 flex flex-col gap-4 print:hidden h-full">
+      <div className="lg:col-span-7 flex flex-col gap-4 print:hidden h-auto lg:h-full">
         
         {/* Toggle Controls */}
         <div className="bg-card border rounded-xl overflow-hidden flex shadow-sm">
@@ -508,7 +508,7 @@ export default function POS() {
         CHECKOUT / CART TERMINAL
         ======================================================== 
       */}
-      <div className="lg:col-span-5 bg-card border border-border rounded-xl flex flex-col h-full print:hidden shadow-lg overflow-hidden">
+      <div className="lg:col-span-5 bg-card border border-border rounded-xl flex flex-col h-auto lg:h-full min-h-[500px] print:hidden shadow-lg overflow-hidden">
         
         <div className={`p-4 flex justify-between items-center shadow-sm z-10 transition-colors ${mode === 'sale' ? 'bg-primary text-primary-foreground' : 'bg-blue-600 text-white'}`}>
           <h2 className="text-xl font-black flex items-center gap-2">
@@ -630,6 +630,19 @@ export default function POS() {
           </button>
         </div>
 
+        {/* Mobile Sticky CTA */}
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t p-4 z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] flex items-center justify-between gap-4">
+           <div className="flex flex-col">
+              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Total Owed</span>
+              <span className="text-xl font-black text-primary">₹{totalAmount.toFixed(2)}</span>
+           </div>
+           <button 
+             onClick={processSale}
+             className={`flex-1 py-3 px-6 rounded-xl font-black text-sm uppercase tracking-wider shadow-lg active:scale-95 transition-all ${mode === 'sale' ? 'bg-primary text-primary-foreground shadow-primary/25' : 'bg-blue-600 text-white shadow-blue-500/25'}`}
+           >
+             Finish {mode}
+           </button>
+        </div>
       </div>
     </div>
   );
