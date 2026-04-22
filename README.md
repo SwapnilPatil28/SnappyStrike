@@ -79,7 +79,7 @@ To run this repository locally or launch your own ERP node:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/snappystrike.git
+git clone https://github.com/SwapnilPatil28/snappystrike.git
 cd snappystrike
 
 # 2. Install Dependencies
